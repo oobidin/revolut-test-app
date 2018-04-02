@@ -1,0 +1,26 @@
+.exchange-panel {
+	color: #FFFFFF;
+
+	&--from {
+		background-color: #2668ED;
+	}
+	&--to {
+		background-color: #2153AF;
+	}
+
+	&-left {
+		padding: 50px;
+
+		&__currency {
+			font-size: 35px;
+		}
+		&__balance {
+
+		}
+	}
+
+	&-right {
+		padding: 50px;
+	}
+
+}

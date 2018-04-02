@@ -1,0 +1,9 @@
+export const EXCHANGE = 'EXCHANGE';
+export const SELECT_CURRENCY = 'SELECT_CURRENCY';
+export const REQUEST_RATES = 'REQUEST_RATES';
+export const RECIEVE_RATES = 'RECIEVE_RATES';
+export const INPUT_FROM = 'INPUT_FROM';
+export const INPUT_TO = 'INPUT_TO';
+export const RECALCULATE_FROM = 'RECALCULATE_FROM';
+export const RECALCULATE_TO = 'RECALCULATE_TO';
+

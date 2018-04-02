@@ -5,6 +5,6 @@
         "jasmine": true
     },
     "rules": {
-        "react/jsx-filename-extension": [1, {"extensions": ["test.js", "index.js"]}]
+        "react/jsx-filename-extension": [1, {"extensions": ["test.js", "index.js", ".js", ".jsx"]}]
     }
 }

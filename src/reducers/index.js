@@ -1,3 +1,8 @@
 import { combineReducers } from 'redux';
+import accounts from './accounts';
+import inputExchangeData from './inputExchangeData';
 
-export default combineReducers({});
+export default combineReducers({
+  accounts,
+  formData: inputExchangeData,
+});
