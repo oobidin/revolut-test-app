@@ -1,9 +1,9 @@
 import * as ACTIONS from '../constants/Accounts';
 
-const getRates = (state = 'GBP', action) => {
+const getRates = (state = { rate: 1 }, action) => {
   switch (action.type) {
     case ACTIONS.REQUEST_RATES:
-      return { isFetching: true, items: [] };
+      return { ...state, isFetching: true };
     default:
       return state;
   }

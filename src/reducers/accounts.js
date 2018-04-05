@@ -38,10 +38,12 @@ const accounts = (state = initialState, action) => {
 
       stateCopied.accounts = stateCopied.accounts.map((account) => {
         if (account.currency === from) {
+          // eslint-disable-next-line
           account.balance -= amount;
         }
 
         if (account.currency === to) {
+          // eslint-disable-next-line
           account.balance += toAmount;
         }
 

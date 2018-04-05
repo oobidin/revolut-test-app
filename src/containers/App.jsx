@@ -7,22 +7,27 @@ import Exchange from '../components/Exchange';
 
 import * as accountActions from '../actions/AccountActions';
 import * as inputActions from '../actions/InputExchangeDataActions';
+import * as selectActions from '../actions/CurrencyActions';
 
 import './App.css';
 import '../bootstrap.css';
 import selectCurrency from '../reducers/selectCurrency';
-import inputExchangeData from '../reducers/inputExchangeData';
-
 
 const App = (props) => {
   const { onChange } = props.inputActions;
-  const { formData } = props;
+  const { onCurrencyChange } = props.selectActions;
+  const { formData, currencies } = props;
   //debugger;
 
   return (
     <Grid>
       <Header />
-      <Exchange onChange={onChange} formData={formData} />
+      <Exchange
+        onChange={onChange}
+        formData={formData}
+        currencies={currencies}
+        onCurrencyChange={onCurrencyChange}
+      />
     </Grid>
   );
 };
@@ -30,8 +35,9 @@ const App = (props) => {
 
 
 const mapStateToProps = state => ({
-  selectCurrency,
-  formData: inputExchangeData,
+  //selectCurrency,
+  formData: state.formData,
+  currencies: state.currencies,//inputExchangeData,
   //accounts: state,
 });
 
@@ -40,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     accountActions: bindActionCreators(accountActions, dispatch),
     inputActions: bindActionCreators(inputActions, dispatch),
+    selectActions: bindActionCreators(selectActions, dispatch),
     //userActions: bindActionCreators(userActions, dispatch)
   }
 };

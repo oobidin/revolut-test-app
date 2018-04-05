@@ -9,10 +9,10 @@ const inputExchangeData = (state = { to: '', from: '' }, action) => {
       return { ...state, to: action.to };
 
     case ACTIONS.RECALCULATE_FROM:
-      return { ...state, from: action.to * action.rate };
+      return { ...state, from: `${action.to * action.rate}` };
 
     case ACTIONS.RECALCULATE_TO:
-      return { ...state, to: action.from / action.rate };
+      return { ...state, to: `${action.from / action.rate}` };
     default:
       return state;
   }

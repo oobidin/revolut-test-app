@@ -33,6 +33,7 @@ const Input = (props) => {
       className={`input ${props.className}`}
       autoFocus={props.autoFocus}// eslint-disable-line
       placeholder={props.placeholder}
+      value={props.value}
     />
   );
 };
@@ -42,6 +43,7 @@ Input.propTypes = {
   className: PropTypes.string,
   autoFocus: PropTypes.bool,
   placeholder: PropTypes.string,
+  value: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -49,6 +51,7 @@ Input.defaultProps = {
   className: '',
   autoFocus: false,
   placeholder: '',
+  value: '',
 };
 
 export default Input;
