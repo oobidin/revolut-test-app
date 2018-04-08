@@ -2,6 +2,7 @@
   "name": "revolut-test-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://oobidin.github.io/revolut-test-app",
   "dependencies": {
     "eslint": "^4.19.1",
     "prop-types": "^15.6.1",
@@ -16,7 +17,6 @@
     "react-scripts": "1.1.1",
     "react-select": "^1.2.1",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -25,7 +25,9 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lintfix": "eslint . --fix"
+    "lintfix": "eslint . --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
@@ -33,6 +35,7 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "gh-pages": "^1.1.0",
     "postcss-color-function": "^4.0.1",
     "postcss-import": "^11.1.0",
     "postcss-initial": "^2.0.0",

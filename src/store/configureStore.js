@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
+import getRate from '../actions/RateActions';
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, logger),
+    applyMiddleware(thunk),
   );
 
   if (module.hot) {
@@ -16,6 +16,8 @@ export default function configureStore(initialState) {
       store.replaceReducer(nextRootReducer);
     });
   }
+
+  store.dispatch(getRate());
 
   return store;
 }

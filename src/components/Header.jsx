@@ -1,45 +1,50 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Alert } from 'react-bootstrap';
 import 'react-select/dist/react-select.css';
+import PropTypes from 'prop-types';
 
 import './Header.css';
 
 import Link from './Link';
 
-import commonConstants from '../constants/commonConstants';
+import * as CONSTANTS from '../constants/CommonConstants';
 import EN from '../constants/l10n/en';
 
-//const currencies = commonConstants.CURRENCIES;
 
-const Header = () => (
-  <Row className="header">
-    <Col xs={6} className="header__left">
-      <Link
-        href={commonConstants.URL_BASE}
-        text={EN.CANCEL_LINK}
-        className="link--float-left"
-      />
-    </Col>
-    <Col xs={6} className="header__right">
-      <Link
-        href={commonConstants.URL_EXCHANGE}
-        text={EN.EXCHANGE_LINK}
-        className="link--float-right"
-      />
-    </Col>
-  </Row>
+const Header = props => (
+  <div>
+    {
+      props.isNotificationVisible ?
+        <Row>
+          <Alert bsStyle="success" className="notification">
+            The exchange was successful
+          </Alert>
+        </Row>
+        : ''
+    }
+    <Row className="header">
+      <Col xs={6} className="header__left">
+        <Link
+          href={CONSTANTS.URL_BASE}
+          text={EN.CANCEL_LINK}
+        />
+      </Col>
+      <Col xs={6} className="header__right">
+        <Link
+          href={CONSTANTS.URL_EXCHANGE}
+          text={EN.EXCHANGE_LINK}
+          onClick={props.exchange}
+          disabled={props.isExchangeDisabled}
+        />
+      </Col>
+    </Row>
+  </div>
 );
-/*
-Header.propTypes = {
-  currencies: PropTypes.arrayOf(PropTypes.object),
-  baseCurrency: PropTypes.string,//.isRequired,
-  toCurrency: PropTypes.string,//.isRequired,
-};*/
 
-Header.defaultProps = {
-  currencies: [],
-  baseCurrency: 'GBP',
-  toCurrency: 'EUR',
+Header.propTypes = {
+  exchange: PropTypes.func.isRequired,
+  isNotificationVisible: PropTypes.bool.isRequired,
+  isExchangeDisabled: PropTypes.bool.isRequired,
 };
 
 export default Header;

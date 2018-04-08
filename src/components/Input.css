@@ -1,14 +1,23 @@
 .input {
-	background: none;
-	border: none;
-	outline: none;
-	font-size: 35px;
-	float: right;
-	text-align: right;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 
-	&::placeholder {
-		color: #FFFFFF;
-		opacity: 0.8;
+	&__input {
+		background: none;
+		border: none;
+		outline: none;
+		font-size: 35px;
+		text-align: right;
+		display: block;
+
+		&::after {
+			clear: both;
+		}
+
+		&::placeholder {
+			color: #FFFFFF;
+			opacity: 0.8;
+		}
 	}
 }

@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 
 import Input from '../components/Input';
-import './EchangePanel.css';
+import './ExchangePanel.css';
 
 
 import EN from '../constants/l10n/en';
@@ -15,16 +15,22 @@ const ExchangePanel = (props) => {
     currencies,
     currency,
     direction,
-    onChange,
+    onInputChange,
     onCurrencyChange,
+    getRate,
+    account,
   } = props;
 
-  const onInputChange = (data) => {
-    onChange(data, direction);
+  const onChange = (data) => {
+    onInputChange(data, direction);
   };
 
   const onSelectChange = (data) => {
     onCurrencyChange(data.value, direction);
+
+    if (direction === 'from') {
+      getRate();
+    }
   };
 
   return (
@@ -39,15 +45,20 @@ const ExchangePanel = (props) => {
             onChange={onSelectChange}
           />
         </div>
-        <div className="exchange-panel-left__balance">{EN.BALANCE}: </div>
+        <div className="exchange-panel-left__balance">{EN.BALANCE}: {account.balance}</div>
       </Col>
       <Col xs={6} className="exchange-panel-right">
         <Input
-          onChange={onInputChange}
+          onChange={onChange}
           className="exchange-panel-right__input"
           autoFocus={direction === 'from'}
           placeholder={direction === 'from' ? EN.INPUT_PLACEHOLDER : ''}
-          value={value}
+          value={
+            +value > 0
+            ? (direction === 'from' ? '- ' : '+ ') + value
+            : value
+          }
+          max={direction === 'from' ? account.balance : -1}
         />
       </Col>
     </Row>
@@ -59,7 +70,13 @@ ExchangePanel.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   currency: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onCurrencyChange: PropTypes.func.isRequired,
+  getRate: PropTypes.func.isRequired,
+  account: PropTypes.PropTypes.shape({
+    currency: PropTypes.string.isRequired,
+    balance: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default ExchangePanel;

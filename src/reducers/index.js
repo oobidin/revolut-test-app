@@ -1,10 +1,18 @@
 import { combineReducers } from 'redux';
 import accounts from './accounts';
-import inputExchangeData from './inputExchangeData';
+import formInputData from './formInputData';
 import selectCurrency from './selectCurrency';
+import getRates from './rates';
+import notification from './notification';
+import exchangeLink from './exchangeLink';
 
-export default combineReducers({
+const appReducer = combineReducers({
   accounts,
-  formData: inputExchangeData,
+  notification,
+  exchangeLink,
+  formData: formInputData,
   currencies: selectCurrency,
+  rate: getRates,
 });
+
+export default appReducer;

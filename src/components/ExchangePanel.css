@@ -9,21 +9,16 @@
 	}
 
 	&-left {
-		padding: 50px;
+		padding: 50px 30px;
 
 		&__currency {
 			.Select {
 				max-width: 100px;
 			}
-			//font-size: 35px;
-		}
-		&__balance {
-
 		}
 	}
 
 	&-right {
-		padding: 50px;
+		padding: 50px 30px;
 	}
-
 }

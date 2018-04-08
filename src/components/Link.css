@@ -1,12 +1,7 @@
 .link {
 	color: #FFFFFF;
 
-	&--float {
-		&-left {
-			float: left;
-		}
-		&-right {
-			float: right;
-		}
+	&:hover {
+		color: #FFFFFF;
 	}
 }
